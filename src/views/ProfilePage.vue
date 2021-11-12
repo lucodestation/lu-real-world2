@@ -118,10 +118,13 @@ export default {
           : 'getProfiles';
 
       // 获取信息
-      const user = await api[prop](username);
+      const result = await api[prop](username);
 
-      if (user) {
-        this.profile = user.data;
+      if (result) {
+        this.profile =
+          username === this.$store.state.currentUser.username
+            ? result.user
+            : result.profile;
       }
     },
     async myArticles() {
@@ -159,10 +162,10 @@ export default {
       // 判断是关注还是取消关注
       const prop = this.profile.following ? 'deleteFollowUser' : 'followUser';
 
-      const user = await api[prop](this.profile.username);
+      const result = await api[prop](this.profile.username);
 
-      if (user) {
-        this.profile = user.data;
+      if (result) {
+        this.profile = result.profile;
       }
       this.followLoading = false;
     }

@@ -97,10 +97,10 @@ export default {
       const user = await api[prop](this.article.author.username);
 
       if (user) {
-        const article = await api.getArticle(this.article.slug);
+        const result = await api.getArticle(this.article.slug);
 
-        if (article) {
-          this.$emit('updateArticle', article.data);
+        if (result) {
+          this.$emit('updateArticle', result.article);
         }
       }
 
@@ -120,10 +120,10 @@ export default {
         ? 'deleteFavoriteArticle'
         : 'favoriteArticle';
 
-      const article = await api[prop](this.article.slug);
+      const result = await api[prop](this.article.slug);
 
-      if (article) {
-        this.$emit('updateArticle', article.data);
+      if (result) {
+        this.$emit('updateArticle', result.article);
       }
 
       this.favoriteLoading = false;

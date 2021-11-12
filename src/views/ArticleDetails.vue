@@ -90,10 +90,10 @@ export default {
     }
   },
   async created() {
-    const article = await api.getArticle(this.$route.params.slug);
+    const result = await api.getArticle(this.$route.params.slug);
 
-    if (article) {
-      this.article = article.data;
+    if (result) {
+      this.article = result.article;
     }
   },
   methods: {

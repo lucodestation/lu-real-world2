@@ -34,7 +34,7 @@ if (token().length > 150) {
     router.go(0);
   }
   // 将用户信息保存到 store
-  store.commit('changeCurrentUser', result.responseJSON.data);
+  store.commit('changeCurrentUser', result.responseJSON.user);
 }
 
 new Vue({

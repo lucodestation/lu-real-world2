@@ -103,11 +103,13 @@ export default {
       // 判断是注册还是登录
       const prop = this.mode === 'register' ? 'register' : 'login';
 
-      const user = await api[prop](this.formData);
+      const result = await api[prop]({
+        user: this.formData
+      });
 
-      if (user) {
+      if (result) {
         // 将用户信息放到 store 中
-        this.$store.commit('changeCurrentUser', user.data);
+        this.$store.commit('changeCurrentUser', result.user);
         // 重定向到首页
         this.$router.push('/');
       }

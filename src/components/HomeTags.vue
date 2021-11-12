@@ -37,10 +37,10 @@ export default {
   async mounted() {
     this.isLoading = true;
 
-    const tags = await api.getTagList();
+    const result = await api.getTagList();
 
-    if (tags && tags.data.length) {
-      this.tags = tags.data;
+    if (result && result.tags.length) {
+      this.tags = result.tags;
     }
 
     this.isLoading = false;

@@ -39,10 +39,10 @@ export default {
         ? 'deleteFavoriteArticle'
         : 'favoriteArticle';
 
-      const article = await api[prop](this.article.slug);
+      const result = await api[prop](this.article.slug);
 
-      if (article) {
-        this.$emit('updateArticle', article.data);
+      if (result) {
+        this.$emit('updateArticle', result.article);
       }
       this.favoriteLoading = false;
     }

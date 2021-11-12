@@ -85,11 +85,9 @@ export default {
     async addComment() {
       // 显示加载图标
       this.loading = true;
-
-      const comment = await api.createComment(
-        this.$route.params.slug,
-        this.body
-      );
+      const comment = await api.createComment(this.$route.params.slug, {
+        comment: { body: this.body }
+      });
 
       if (comment) {
         this.loadComments();
@@ -107,10 +105,10 @@ export default {
     },
     // 加载评论
     async loadComments() {
-      const comments = await api.getComments(this.$route.params.slug);
+      const result = await api.getComments(this.$route.params.slug);
 
-      if (comments) {
-        this.comments = comments.data;
+      if (result) {
+        this.comments = result.comments;
       }
     }
   },

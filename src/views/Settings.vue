@@ -89,14 +89,14 @@ export default {
     // 清除错误信息
     errorHandle();
 
-    const user = await api.getCurrentUserInfo();
+    const result = await api.getCurrentUserInfo();
 
-    if (user) {
+    if (result) {
       this.formData = {
-        image: user.data.image,
-        username: user.data.username,
-        bio: user.data.bio,
-        email: user.data.email
+        image: result.user.image,
+        username: result.user.username,
+        bio: result.user.bio,
+        email: result.user.email
       };
     }
   },
@@ -118,9 +118,11 @@ export default {
       // 显示加载图标
       this.loading = true;
 
-      const user = await api.updateCurrentUserInfo(this.formData);
+      const result = await api.updateCurrentUserInfo({
+        user: this.formData
+      });
 
-      if (user) {
+      if (result) {
         // 刷新页面
         this.$router.go(0);
       }

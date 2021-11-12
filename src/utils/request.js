@@ -44,7 +44,7 @@ service.interceptors.response.use(
     }
 
     if (error.response.status >= 400) {
-      errorHandle(error.response.data.detail);
+      errorHandle(error.response.data.errors);
       return;
     }
 

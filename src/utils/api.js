@@ -122,13 +122,11 @@ api.deleteArticle = async (slug) => {
 };
 
 // 发表评论
-api.createComment = async (slug, body) => {
+api.createComment = async (slug, data) => {
   const result = await request({
     url: `/articles/${slug}/comments`,
     method: 'post',
-    data: {
-      body
-    }
+    data
   });
   return result;
 };

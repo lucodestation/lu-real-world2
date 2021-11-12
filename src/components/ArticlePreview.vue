@@ -74,9 +74,9 @@ export default {
       // 获取文章
       const result = await api.getArticlesFeed(params);
 
-      if (result) {
-        this.articles = result.data.articles;
-        this.articlesCount = result.data.articlesCount;
+      if (result && result.articlesCount) {
+        this.articles = result.articles;
+        this.articlesCount = result.articlesCount;
       }
 
       // 隐藏加载图标
@@ -93,9 +93,9 @@ export default {
       // 获取文章
       const result = await api.getArticles(params);
 
-      if (result) {
-        this.articles = result.data.articles;
-        this.articlesCount = result.data.articlesCount;
+      if (result && result.articlesCount) {
+        this.articles = result.articles;
+        this.articlesCount = result.articlesCount;
       }
 
       // 隐藏加载图标
@@ -115,9 +115,9 @@ export default {
         tag: this.currentTag
       });
 
-      if (result) {
-        this.articles = result.data.articles;
-        this.articlesCount = result.data.articlesCount;
+      if (result && result.articlesCount) {
+        this.articles = result.articles;
+        this.articlesCount = result.articlesCount;
       }
 
       // 隐藏加载图标
@@ -137,9 +137,9 @@ export default {
         author: this.$route.params.username
       });
 
-      if (result) {
-        this.articles = result.data.articles;
-        this.articlesCount = result.data.articlesCount;
+      if (result && result.articlesCount) {
+        this.articles = result.articles;
+        this.articlesCount = result.articlesCount;
       }
 
       // 隐藏加载图标
@@ -159,9 +159,9 @@ export default {
         favorited: this.$route.params.username
       });
 
-      if (result) {
-        this.articles = result.data.articles;
-        this.articlesCount = result.data.articlesCount;
+      if (result && result.articlesCount) {
+        this.articles = result.articles;
+        this.articlesCount = result.articlesCount;
       }
 
       // 隐藏加载图标

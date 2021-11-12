@@ -93,14 +93,14 @@ export default {
       return;
     }
 
-    const article = await api.getArticle(this.$route.params.slug);
+    const result = await api.getArticle(this.$route.params.slug);
 
-    if (article) {
+    if (result) {
       this.formData = {
-        title: article.data.title,
-        description: article.data.description,
-        body: article.data.body,
-        tagList: article.data.tagList
+        title: result.article.title,
+        description: result.article.description,
+        body: result.article.body,
+        tagList: result.article.tagList
       };
     }
   },
@@ -137,11 +137,16 @@ export default {
       // 判断是创建还是更新
       const prop = this.mode === 'create' ? 'createArticle' : 'updateArticle';
 
-      const article = await api[prop](this.formData, this.$route.params.slug);
+      const result = await api[prop](
+        {
+          article: this.formData
+        },
+        this.$route.params.slug
+      );
 
-      if (article) {
+      if (result) {
         // 跳转到文章详情页
-        this.$router.push(`/article/${article.data.slug}`);
+        this.$router.push(`/article/${result.article.slug}`);
       }
 
       // 隐藏加载图标
