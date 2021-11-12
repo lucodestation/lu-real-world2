@@ -63,7 +63,7 @@ export default {
     this.currentTabCard === 'myFavorites' && this.myFavorites();
   },
   methods: {
-    async feedArticles(params = {}) {
+    async feedArticles(params = { limit: 10 }) {
       // console.log('我的订阅');
       // 清空之前的文章
       this.articles = [];
@@ -82,7 +82,7 @@ export default {
       // 隐藏加载图标
       this.loading = false;
     },
-    async allArticles(params = {}) {
+    async allArticles(params = { limit: 10 }) {
       // console.log('全部文章');
       // 清空之前的文章
       this.articles = [];
@@ -101,7 +101,7 @@ export default {
       // 隐藏加载图标
       this.loading = false;
     },
-    async tagArticles(params = {}) {
+    async tagArticles(params = { limit: 10 }) {
       // console.log('含此标签的文章');
       // 清空之前的文章
       this.articles = [];
@@ -123,7 +123,7 @@ export default {
       // 隐藏加载图标
       this.loading = false;
     },
-    async myArticles(params = {}) {
+    async myArticles(params = { limit: 10 }) {
       // console.log('我的文章');
       // 清空之前的文章
       this.articles = [];
@@ -145,7 +145,7 @@ export default {
       // 隐藏加载图标
       this.loading = false;
     },
-    async myFavorites(params = {}) {
+    async myFavorites(params = { limit: 10 }) {
       // console.log('我的收藏');
       // 清空之前的文章
       this.articles = [];
