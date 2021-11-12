@@ -14,6 +14,7 @@ const errorHandle = (error) => {
 
   if (Array.isArray(error)) {
     store.commit('changeErrorArray', error);
+    return;
   }
 
   store.commit('changeErrorArray', [
